@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="Marin" id="0000001">
+        <createTable tableName="supermarket">
+            <column name="id" type="uuid" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(45)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="address" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(45)"/>
+            <column name="workhours" type="VARCHAR(10)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Marin" id="0000002">
+        <createTable tableName="item">
+            <column name="id" type="uuid" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_type" type="ENUM('FOOD','DRINKS', 'TECHNOLOGY', 'HOUSEHOLD')">
+            </column>
+            <column name="supermarket_id" type="uuid">
+                <constraints foreignKeyName="supermarket_id" references="supermarket(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
