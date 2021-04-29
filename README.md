@@ -1,6 +1,3 @@
-Spring project of Marin Georgiev - attention12@abv.bg
-
-
 Create a Spring Boot application for processing Supermarket purchases.
 
 We need to create an Application that handles Supermarket purchases based on Spring Boot. The Application will have endpoints and entities as specified below.
